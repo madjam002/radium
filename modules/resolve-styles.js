@@ -219,15 +219,7 @@ var resolveStyles = function (
     }
   });
 
-  // Strip special styles
-  var newStyle = {};
-  Object.keys(currentStyle).forEach(function (styleKey) {
-    if (!_isSpecialKey(styleKey)) {
-      newStyle[styleKey] = currentStyle[styleKey];
-    }
-  });
-
-  newProps.style = Prefixer.getPrefixedStyle(component, newStyle);
+  newProps.style = Prefixer.getPrefixedStyle(component, currentStyle);
 
   checkProps(component, newProps.style);
 
