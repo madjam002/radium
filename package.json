@@ -27,11 +27,11 @@
   "license": "MIT",
   "dependencies": {
     "array-find": "^1.0.0",
+    "babel": "^5.8.21",
     "exenv": "^1.2.0",
     "rimraf": "^2.4.0"
   },
   "devDependencies": {
-    "babel": "^5.8.21",
     "babel-eslint": "^3.1.23",
     "babel-loader": "^5.1.4",
     "chai": "^3.0.0",
