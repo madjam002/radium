@@ -157,38 +157,38 @@ var resolveStyles = function (
   // will not be here, so each component needs to use Radium.
   var oldChildren = renderedElement.props.children;
   var newChildren = oldChildren;
-  if (oldChildren) {
-    var childrenType = typeof oldChildren;
-    if (childrenType === 'string' || childrenType === 'number') {
-      // Don't do anything with a single primitive child
-      newChildren = oldChildren;
-    } else if (childrenType === 'function') {
-      // Wrap the function, resolving styles on the result
-      newChildren = function () {
-        var result = oldChildren.apply(this, arguments);
-        if (React.isValidElement(result)) {
-          return resolveStyles(component, result, existingKeyMap);
-        }
-        return result;
-      };
-    } else if (React.Children.count(oldChildren) === 1 && oldChildren.type) {
-      // If a React Element is an only child, don't wrap it in an array for
-      // React.Children.map() for React.Children.only() compatibility.
-      var onlyChild = React.Children.only(oldChildren);
-      newChildren = resolveStyles(component, onlyChild, existingKeyMap);
-    } else {
-      newChildren = React.Children.map(
-        oldChildren,
-        function (child) {
-          if (React.isValidElement(child)) {
-            return resolveStyles(component, child, existingKeyMap);
-          }
-
-          return child;
-        }
-      );
-    }
-  }
+  // if (oldChildren) {
+  //   var childrenType = typeof oldChildren;
+  //   if (childrenType === 'string' || childrenType === 'number') {
+  //     // Don't do anything with a single primitive child
+  //     newChildren = oldChildren;
+  //   } else if (childrenType === 'function') {
+  //     // Wrap the function, resolving styles on the result
+  //     newChildren = function () {
+  //       var result = oldChildren.apply(this, arguments);
+  //       if (React.isValidElement(result)) {
+  //         return resolveStyles(component, result, existingKeyMap);
+  //       }
+  //       return result;
+  //     };
+  //   } else if (React.Children.count(oldChildren) === 1 && oldChildren.type) {
+  //     // If a React Element is an only child, don't wrap it in an array for
+  //     // React.Children.map() for React.Children.only() compatibility.
+  //     var onlyChild = React.Children.only(oldChildren);
+  //     newChildren = resolveStyles(component, onlyChild, existingKeyMap);
+  //   } else {
+  //     newChildren = React.Children.map(
+  //       oldChildren,
+  //       function (child) {
+  //         if (React.isValidElement(child)) {
+  //           return resolveStyles(component, child, existingKeyMap);
+  //         }
+  //
+  //         return child;
+  //       }
+  //     );
+  //   }
+  // }
 
   var props = renderedElement.props;
   var newProps = {};
