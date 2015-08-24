@@ -18,7 +18,7 @@
     "examples": "webpack-dev-server --config examples/webpack.config.js --no-info --content-base examples/",
     "lib": "npm run babel && rimraf lib/__tests__ lib/__mocks__",
     "lint": "eslint modules",
-    "install": "npm run lib",
+    "install": "npm install babel rimraf && npm run lib",
     "prepublish": "npm run lib",
     "test": "karma start",
     "test-coverage": "karma start karma.conf.coverage.js",
